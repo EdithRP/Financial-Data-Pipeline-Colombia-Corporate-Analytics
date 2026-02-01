@@ -1,29 +1,29 @@
 # Financial Data Pipeline: Colombia Corporate Analytics 📊🇨🇴
 
 ## 📝 Project Overview
-Este proyecto está diseñado para centralizar y analizar la salud financiera de las empresas en Colombia. Utilizando la API de **Datos Abiertos (Socrata)**, el pipeline automatiza la captura de estados financieros, transformando datos crudos en insights accionables mediante un proceso robusto de ETL (Extract, Transform, Load).
+Este proyecto implementa un flujo de datos **End-to-End** diseñado para extraer, procesar y visualizar la salud financiera de empresas colombianas. 
 
-El objetivo principal es permitir una exploración profunda de indicadores financieros clave a nivel nacional, facilitando la toma de decisiones basada en datos.
+El sistema utiliza a **Rappi** como caso de estudio inicial, pero está arquitectado para ser dinámico: mediante el ingreso del **NIT**, el pipeline automatiza la generación de insights financieros clave, permitiendo una auditoría rápida y técnica de cualquier entidad registrada en las bases de datos oficiales.
 
 ## 🏗️ Technical Architecture
-El flujo de datos se divide en tres capas principales para garantizar la integridad y eficiencia:
+El proyecto sigue una arquitectura de nube híbrida optimizada para eficiencia de costos y rendimiento:
 
-1.  **Data Source Layer:** Conexión y autenticación con la API de Datos Abiertos de entidades gubernamentales colombianas.
-2.  **Processing Layer (macOS):** * **Python:** Limpieza, normalización de cifras y manejo de tipos de datos financieros con `Pandas`.
-    * **PostgreSQL:** Estructuración de datos en un modelo relacional optimizado para consultas.
-3.  **Visualization Layer (Windows):** * **Power BI:** Conexión remota a la base de datos para modelado de datos y diseño de dashboards interactivos.
+1.  **Data Ingestion:** Scripts de Python utilizando la librería `sodapy` para consumir la API de **Socrata** (Datos Abiertos Colombia).
+2.  **ELT Process:** Transformación y limpieza de datos con `Pandas`, aplicando principios **DRY (Don't Repeat Yourself)** para asegurar un código mantenible y escalable.
+3.  **Data Persistence:** Almacenamiento robusto en una base de datos **PostgreSQL**.
+4.  **Reporting & Visualization:** Reportes dinámicos en **Power BI Service**, conectados mediante un **On-premises Data Gateway** para garantizar que los datos fluyan desde el entorno local a la nube.
+
 
 ## 🌟 Key Features
-* **Extracción Automatizada:** Implementación de peticiones paginadas para manejar grandes volúmenes de datos financieros.
-* **Integración Híbrida:** Desarrollo optimizado utilizando macOS para el procesamiento de datos y Windows para la visualización avanzada en Power BI.
-* **Base de Datos Estructurada:** Almacenamiento en PostgreSQL que permite análisis históricos y comparativos eficientes.
-* **Insights Sectoriales:** Capacidad de segmentar el análisis por sector económico, ubicación geográfica y periodos fiscales.
+* **Consulta por NIT:** Capacidad de parametrizar la extracción para obtener datos específicos de cualquier empresa.
+* **Procesamiento Eficiente:** Lógica de transformación modular que prepara los estados financieros para análisis de ratios e indicadores de liquidez.
+* **Visualización Proactiva:** Dashboard en Power BI diseñado para resaltar automáticamente los insights más importantes (EBITDA, margen neto, apalancamiento).
+* **Escalabilidad con n8n:** Arquitectura preparada para integrar automatización de flujo de trabajo (n8n) en fases futuras.
 
 ## 🛠️ Technologies Used
-* **Python 3.10:** (Pandas, Requests, SQLAlchemy, Psycopg2)
-* **PostgreSQL:** Motor de base de datos relacional.
-* **Conda:** Gestión de entornos virtuales.
-* **Git/GitHub:** Control de versiones.
-* **Power BI:** Business Intelligence, modelado y DAX.
+* **Python:** (Sodapy, Pandas, SQLAlchemy)
+* **Database:** PostgreSQL
+* **BI Tool:** Power BI & Power BI Gateway
+* **Environment:** Conda (macOS para desarrollo / Windows para BI)
+* **Version Control:** Git & GitHub
 
----
