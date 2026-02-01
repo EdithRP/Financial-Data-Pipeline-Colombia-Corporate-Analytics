@@ -1,0 +1,15 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+env_proyectofinanciero/
+
+# Mac
+.DS_Store
+
+# IDEs
+.vscode/
+.idea/
+
+# OneDrive (archivos temporales)
+.~*
